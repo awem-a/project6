@@ -1,11 +1,14 @@
-card_number = input('Введите номер карты: ')
-
-def summ(card_number):
-  if 13 <= len(card_number) <= 16:
-     result = 'Номер карты введен верно'
-  else:
-     result = 'Ошибка! Номер кредитной карты должен иметь от 13 до 16 цифр'
-  return result
+while True:
+    try:
+        card_number1 = int(input('Введите номер карты: '))
+        card_number = str(card_number1)
+        if 13 <= len(card_number) <= 16:
+            print('Номер карты введен верно')
+            break
+        else:
+            print('Ошибка! Номер кредитной карты должен иметь от 13 до 16 цифр')
+    except ValueError:
+        print('Ошибка! Введите номер кредитной карты')
 
 def company(card_number):
   if str(card_number).startswith('4'):
@@ -34,13 +37,9 @@ def validate(card_number):
             else:
                 total = total + int(cardreverse[i])
         if total % 10 == 0:
-            response = "Действительная карта"
+            response = 'Действительная карта'
         else:
             response = 'Недействительная карта'
         return response
-print(summ(card_number))
-if 13 <= len(card_number) <= 16:
-  print(company(card_number))
-else:
-  print('Нельзя определить тип карты!')
+print(company(card_number))
 print(validate(card_number))
