@@ -1,1 +1,46 @@
+card_number = input('Введите номер карты: ')
 
+def summ(card_number):
+  if 13 <= len(card_number) <= 16:
+     result = 'Номер карты введен верно'
+  else:
+     result = 'Ошибка! Номер кредитной карты должен иметь от 13 до 16 цифр'
+  return result
+
+def company(card_number):
+  if str(card_number).startswith('4'):
+      comp = 'Visa'
+  elif str(card_number).startswith('5'):
+      comp = 'MasterCard'
+  elif str(card_number).startswith('37'):
+      comp = 'AmericanExpress'
+  elif str(card_number).startswith('6'):
+      comp = 'Discover'
+  elif str(card_number).startswith('2'):
+      comp = 'МИР'
+  return 'Тип карты: ' + comp
+
+def validate(card_number):
+        total = 0
+        cardreverse = card_number[::-1]
+        for i in range(len(cardreverse)):
+            if i % 2 == 1:
+                double = int(cardreverse[i]) * 2
+                if double > 9:
+                    half_sum = (double//10) + (double%10)
+                else:
+                    half_sum = double
+                total = total + half_sum
+            else:
+                total = total + int(cardreverse[i])
+        if total % 10 == 0:
+            response = "Действительная карта"
+        else:
+            response = 'Недействительная карта'
+        return response
+print(summ(card_number))
+if 13 <= len(card_number) <= 16:
+  print(company(card_number))
+else:
+  print('Нельзя определить тип карты!')
+print(validate(card_number))
