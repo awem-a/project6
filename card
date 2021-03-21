@@ -12,16 +12,17 @@ while True:
 
 def company(card_number):
   if str(card_number).startswith('4'):
-      comp = 'Visa'
+      return 'Тип карты: Visa'
   elif str(card_number).startswith('5'):
-      comp = 'MasterCard'
+      return 'Тип карты: MasterCard'
   elif str(card_number).startswith('37'):
-      comp = 'AmericanExpress'
+      return 'Тип карты: AmericanExpress'
   elif str(card_number).startswith('6'):
-      comp = 'Discover'
+      return 'Тип карты: Discover'
   elif str(card_number).startswith('2'):
-      comp = 'МИР'
-  return 'Тип карты: ' + comp
+      return 'Тип карты: МИР'
+  else:
+      return 'Тип карты определить нельзя!'
 
 def validate(card_number):
         total = 0
@@ -37,7 +38,7 @@ def validate(card_number):
             else:
                 total = total + int(cardreverse[i])
         if total % 10 == 0:
-            response = 'Действительная карта'
+            response = "Действительная карта"
         else:
             response = 'Недействительная карта'
         return response
